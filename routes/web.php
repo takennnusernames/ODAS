@@ -13,10 +13,6 @@ use App\Models\Listing;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 //All listings
 Route::get('/listings', function() {
     return view('listings', [
@@ -31,8 +27,5 @@ Route::get('/listings/{id}', function($id) {
         'listing' => Listing::find($id)
     ]);
 });
-
-
-#Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
