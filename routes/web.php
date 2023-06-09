@@ -28,4 +28,6 @@ Route::get('/listings/{id}', function($id) {
     ]);
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/register', function() {
+    return view('register');
+});
