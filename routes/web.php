@@ -31,3 +31,12 @@ Route::get('/listings/{id}', function($id) {
 Route::get('/register', function() {
     return view('register');
 });
+
+Route::get('/submission', function() {
+    return view('submission');
+});
+
+
+Route::get('/', function() {
+    return view('register');
+});

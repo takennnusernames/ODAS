@@ -35,30 +35,28 @@
 
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Username</label>
-                <input name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email</label>
-                <input name="email" type="email" class="form-control" id="exampleInputEmail1"
-                    aria-describedby="emailHelp">
+                <input name="email" type="email" class="form-control" id="exampleInputEmail1"                 aria-describedby="emailHelp" required>
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">First Name</label>
-                <input name="f_name" type="text" class="form-control" id="exampleInputEmail1"
-                    aria-describedby="emailHelp">
+                <input name="f_name" type="text" class="form-control" id="exampleInputEmail1"                     aria-describedby="emailHelp" required>
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Last Name</label>
                 <input name="l_name" type="text" class="form-control" id="exampleInputEmail1"
-                    aria-describedby="emailHelp">
+                aria-describedby="emailHelp" required>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+                <input name="password" type="password" class="form-control" id="exampleInputPassword1" required>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
-                <input name="password2" type="password" class="form-control" id="exampleInputPassword1">
+                <input name="password2" type="password" class="form-control" id="exampleInputPassword1" required>
             </div>
             <div class="d-grid gap-2">
                 <button type="submit" name="submit" class="btn btn-primary">Register</button>
