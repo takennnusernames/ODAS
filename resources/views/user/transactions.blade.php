@@ -31,11 +31,16 @@
                     @endforeach
                 </tbody>
             </table>
+            @guest
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="/login" class="btn btn-primary btn-lg" tabindex="-1" role="button">LOGIN</a>
+            <a href="/user_register" class="btn btn-secondary btn-lg" tabindex="-1" role="button">REGISTER HERE</a>
+        </div>
+    @endguest
         </div>
     </body>
     @foreach ($transactions as $transaction)
         <!-- Scrollable modal -->
-        <div>hi</div>
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal fade" id="Modal{{ $transaction['id'] }}" tabindex="-1"
                 aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -63,3 +68,4 @@
         </div>
     @endforeach
 </x-user_layout>
+

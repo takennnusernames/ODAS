@@ -48,19 +48,6 @@ class UserController extends Controller
         //Login
         auth()->login($user);
 
-        //Create table for each type of document case
-        $ejsTable['user_id'] = auth()->user()->id;
-        $ejsTable['name'] = auth()->user()->name;
-        $ejsTable['nullCount'] = 14;
-
-        ejsDocument::create($ejsTable);
-
-        $ssTable['user_id'] = auth()->user()->id;
-        $ssTable['name'] = auth()->user()->name;
-        $ssTable['nullCount'] = 13;
-
-        ssDocument::create($ssTable);
-
         return redirect('/status')->with('message', 'Account created and logged in');
     }
 

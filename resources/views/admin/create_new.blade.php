@@ -29,6 +29,7 @@
             </div>
             <input type="hidden" name="name" value="{{ request('name') }}">
             <input type="hidden" name="quantity" value="{{ request('quantity') }}">
+            <input type="hidden" name="description" value="{{ request('description') }}">
             @for ($i = 1; $i <= request('quantity'); $i++)
                 <div class="col-md">
                     <div class="form-floating mb-3">

@@ -37,9 +37,6 @@
                 <div class="top" id="header">
                     <h2>Select Transaction Type</h2>
                 </div>
-                <div class="top" id="ejsHeader" style="display:none;">
-                    <h2>Extrajudicial Settlement Document Submission </h2>
-                </div>
                 <div class="form-floating mb-3">
                     <select name="transaction" id="floatingSelect" class="form-select" onchange="showHideForm()" required>
                         <option value="0">Select</option>

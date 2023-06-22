@@ -44,7 +44,6 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', [DocumentController::class, 'status']);
 
     //Logout user
     Route::post('/logout', [UserController::class, 'logout']);
@@ -62,42 +61,51 @@ Route::middleware(['auth'])->group(function () {
 
     //Store Document submitted
     Route::post('/submitted', [DocumentController::class, 'submitted']);
+
+    Route::get('/user_documents/{transac_id}', [
+        DocumentController::class, 'user_show_file'
+    ]);
+
+    Route::get('/create', function () {
+        return view('admin.create_transaction');
+    });
+    
+    Route::post('/new', [AdminController::class, 'new']);
+    
+    Route::get('/create_new', [AdminController::class, 'create_new'])->name('create_new');
+    
+    Route::post('/save_new', [AdminController::class, 'save']);
+    
+    Route::post('/transaction/{{name}}', function () {
+        return view('assessor.create_transaction2');
+    });
 });
 
 Route::middleware(['assessor'])->group(function () {
     Route::get('/assessor', [AssessorController::class, 'index']);
 
-    Route::get('/ejs', [AssessorController::class, 'ejs']);
-
-    Route::get('/ss', [AssessorController::class, 'ss']);
-
-    Route::get('/documents/ss/{id}', [
-        DocumentController::class, 'ssShow'
+    Route::get('/documents/{id}', [
+        DocumentController::class, 'show'
     ]);
 
-    Route::get('/documents/ejs/{id}', [
-        DocumentController::class, 'ejsShow'
+    Route::get('files/{transac_name}/{id}',[
+        DocumentController::class, 'show_files'
     ]);
 
     Route::get('/assessor/user_assessr/{{id}}', [AssessorController::class, 'index']);
+
+    Route::put('/assessment', [AssessorController::class, 'assessment']);
 });
 
 
-Route::get('/create', function () {
-    return view('admin.create_transaction');
-});
 
-Route::post('/new', [AdminController::class, 'new']);
-
-Route::get('/create_new', [AdminController::class, 'create_new'])->name('create_new');
-
-Route::post('/save_new', [AdminController::class, 'save']);
-
-Route::post('/transaction/{{name}}', function () {
-    return view('assessor.create_transaction2');
-});
 
 Route::get('/transactions', function(){
+    $info = transaction_info::all();
+    return view('user.transactions')->with('transactions', $info);
+});
+
+Route::get('/', function(){
     $info = transaction_info::all();
     return view('user.transactions')->with('transactions', $info);
 });

@@ -5,10 +5,11 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\User;
+use App\Models\Document;
 use App\Models\ssDocument;
 use App\Models\ejsDocument;
-use App\Models\transaction_info;
 use Illuminate\Database\Seeder;
+use App\Models\transaction_info;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -18,11 +19,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        // User::factory(10)->create();
         
-        $user = User::factory()->create([
-            'name' => 'Jon Doe',
-            'email' => 'Jon@gmail.com'
+        User::factory()->create([
+            'name' => 'Jane Doe',
+            'email' => 'Jane@gmail.com'
         ]);
 
         User::factory()->create([
@@ -32,16 +33,11 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123456')
         ]);
 
-        ejsDocument::factory(1)->create([
-            'name' => $user->name,
-            'user_id' => $user->id,
-            'nullCount' => 14
-        ]);
-
-        ssDocument::factory(1)->create([
-            'name' => $user->name,
-            'user_id' => $user->id,
-            'nullCount' => 13
+        User::factory()->create([
+            'role' => 'admin',
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('admin')
         ]);
 
         transaction_info::factory()->create([
@@ -58,5 +54,14 @@ class DatabaseSeeder extends Seeder
             'requirements' => "Deed of Absolute Sale,BIR eCAR,Owner's Duplicate Copy of Title,Realty Tax Clearance,Current Tax Declaration,Transfer Tax Receipt,DAR Clearance,Special Power of Attorney,Sepia,Blueprint,Technical Description,Written Request,Cadastral Cost"
         ]);
         
+        
+   
+
+        Document::factory()->create([
+            'user_id' => 3,
+            'transaction_info_id' => 1,
+            'files' => 'file.pdf',
+            'requirement' => 'BIR eCAR'
+        ]);
     }
 }

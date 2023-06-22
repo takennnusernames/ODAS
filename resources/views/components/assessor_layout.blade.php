@@ -16,6 +16,7 @@
     <title>ODAS</title>
 </head>
 <x-message />
+
 <body>
     <header>
 
@@ -26,29 +27,7 @@
                     <img src="{{ asset('images/logo.png') }}" width="60" height="60"
                         class="d-inline-block align-top" alt="">
                 </a>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <!-- <a class="nav-link active" aria-current="page" href="index.php">Home</a> -->
-                            <a class="nav-link" href="/ejs">Extrajudicial Settlements</a>
-                        </li>
-                        <li class="nav-item">
-                            <!-- <a class="nav-link active" aria-current="page" href="index.php">Home</a> -->
-                            <a class="nav-link" href="/ss">Simple Sale</a>
-                        </li>
-                        {{-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="true">
-                                Checklist
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/">Extrajudical Settlement</a>
-                                </li>
-                                <li><a class="dropdown-item" href="/">Simple Sale</a></li>
-                            </ul>
-                        </li> --}}
-                    </ul>
-                </div>
+
                 @auth
                     <div class="p-3 fw-bold text-uppercase">
                         {{ auth()->user()->name }}
@@ -59,46 +38,45 @@
                             LOGOUT
                         </button>
                     </form>
-                    @endauth
-                </div>
-            </nav>
+                @endauth
+        </nav>
 
-        </header>
-        {{-- VIEW OUTPUT --}}
-        {{ $slot }}
-        <form method="POST">
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">LOGIN</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
+    </header>
+    {{-- VIEW OUTPUT --}}
+    {{ $slot }}
+    <form method="POST">
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">LOGIN</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
 
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Username</label>
-                                <input maxlength="16" type="text" name="username" class="form-control"
-                                    id="exampleInputEmail1" aria-describedby="emailHelp" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" name="password" class="form-control" id="exampleInputPassword1"
-                                    required>
-                            </div>
-                            <div class="d-grid gap-2">
-                                <button class="btn btn-primary" type="login" name="login">Login</button>
-                            </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Username</label>
+                            <input maxlength="16" type="text" name="username" class="form-control"
+                                id="exampleInputEmail1" aria-describedby="emailHelp" required>
                         </div>
-                        <div class="modal-footer">
-                            No Account Yet?
-                            <a href="/employee_register">Register Here</a>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input type="password" name="password" class="form-control" id="exampleInputPassword1"
+                                required>
                         </div>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" type="login" name="login">Login</button>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        No Account Yet?
+                        <a href="/employee_register">Register Here</a>
                     </div>
                 </div>
             </div>
-        </form>
-    </body>
+        </div>
+    </form>
+</body>
 
-    </html>
+</html>

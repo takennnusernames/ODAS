@@ -13,11 +13,12 @@ class AdminController extends Controller
 
         return redirect()->route('create_new', [
             'name' => $request->name,
-            'quantity' => $request->quantity
+            'quantity' => $request->quantity,
+            'description' => $request->description
         ]);
     }
 
-    public function create_new()
+    public function create_new(Request $request)
     {
         return view('admin.create_new');
     }
@@ -49,7 +50,8 @@ class AdminController extends Controller
             'requirements' => $requirements
         ];
 
-        // dd($formFields);
+        $formFields['qty'] = $request->quantity;
+        $formFields['description'] = $request->description;
 
         transaction_info::create($formFields);
 

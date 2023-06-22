@@ -35,12 +35,16 @@
                     </div>
                 </div>
             </div>
+            <div class="form-floating mb-3">
+                <input name="description" type="text" class="form-control" id="floatingInput"
+                    placeholder="Description" required value={{ old('description') }}>
+                <label for="floatingInput" class="form-label">Description</label>
+            </div>
 
             <div class="d-grid">
                 <button type="submit" name="submit" class="btn btn-primary">Next</button>
             </div>
         </div>
-    </form>
     </form>
 
 

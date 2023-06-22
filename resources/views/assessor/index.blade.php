@@ -9,9 +9,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Transactions</th>
-                        <th scope="col">Assessment Status</th>
-                        <th scope="col">Extrajudical Documents</th>
-                        <th scope="col">Simple Sale Documents</th>
+                        <th scope="col">Cases</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -19,31 +17,18 @@
                         @foreach ($users as $user)
                             @if ($user['role'] === 'user')
                                 <tr>
+                                    @php
+                                        $file = $documents->where('user_id', $user['id']);
+                                        $count = $file->groupBy('transaction_info_id')->count();
+                                    @endphp
                                     <th scope="row">{{ $user['id'] }}</th>
                                     <th>{{ $user['name'] }}</th>
-                                    @php
-                                        $ejs = $ejsDocuments->where('user_id', $user['id']);
-                                        $ss = $ssDocuments->where('user_id', $user['id']);
-                                    @endphp
-
-                                    @if ($ejs->value('nullCount') === 14 && $ss->value('nullCount') === 13)
-                                        <td class="text-center">No Transaction</td>
-                                    @elseif ($ejs->value('nullCount') < 14)
-                                        @if ($ss->value('nullCount') < 13)
-                                            <td class="text-center">EJS & SS </td>
-                                        @else
-                                            <td class="text-center">EJS Transaction</td>
-                                        @endif
-                                    @else
-                                        <td class="text-center">SS Transaction</td>
-                                    @endif
-                                    <td></td>
+                                    
                                     <td>
-                                        <a class="btn btn-info" href="/documents/ejs/{{ $user['id'] }}">Open
-                                        </a>
+                                        {{ $count }} Pending Transactions
                                     </td>
                                     <td>
-                                        <a class="btn btn-info" href="/documents/ss/{{ $user['id'] }}">Open
+                                        <a class="btn btn-info" href="/documents/{{ $user['id'] }}">Open
                                         </a>
                                     </td>
                                 </tr>

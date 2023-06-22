@@ -4,8 +4,6 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Document;
-use App\Models\ssDocument;
-use App\Models\ejsDocument;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -51,13 +49,6 @@ class User extends Authenticatable
     }
     
     // Relationship To User
-    public function ejsDocuments() {
-        return $this->hasMany(ejsDocument::class, 'user_id');
-    }
-
-    public function ssDocuments() {
-        return $this->hasMany(ssDocument::class, 'user_id');
-    }
 
     public function documents() {
         return $this->hasMany(Document::class, 'user_id');

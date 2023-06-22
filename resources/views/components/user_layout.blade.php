@@ -18,6 +18,7 @@
     <title>ODAS</title>
 </head>
 <x-message />
+
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -25,46 +26,56 @@
                 <a class="navbar-brand" href="/">
                     <img src="{{ asset('images/logo.png') }}" width="60" height="60"
                         class="d-inline-block align-text-top">
-                        
+
                 </a>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                
-                @auth
-                
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <!-- <a class="nav-link active" aria-current="page" href="index.php">Home</a> -->
-                            <a class="nav-link" href="/status">Status</a>
-                        </li>
-                        <li class="nav-item">
-                            {{-- <a class="nav-link active" aria-current="page" href="index.php">Submission</a> --}}
-                            <a class="nav-link" href="/submission">Submit Documents</a>
-                        </li>
-                        <li class="nav-item">
-                            {{-- <a class="nav-link active" aria-current="page" href="index.php">Submission</a> --}}
-                            <a class="nav-link" href="/transactions">Transactions</a>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="p-3 fw-bold text-uppercase">
-                    {{auth()->user()->name}} 
-                </div>
-                <form action="/logout" method="POST">
-                    @csrf
-                    <button type="submit" class="btn btn-outline-success me-2" name="logout">
-                        LOGOUT
-                    </button>
-                </form>
+                <div class="collapse navbar-collapse text-center" id="navbarNav">
+
+                    @auth
+
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                {{-- <a class="nav-link active" aria-current="page" href="index.php">Submission</a> --}}
+                                <a class="nav-link" href="/transactions">Transactions</a>
+                            </li>
+                            <li class="nav-item">
+                                <!-- <a class="nav-link active" aria-current="page" href="index.php">Home</a> -->
+                                <a class="nav-link" href="/status">Status</a>
+                            </li>
+                            <li class="nav-item">
+                                {{-- <a class="nav-link active" aria-current="page" href="index.php">Submission</a> --}}
+                                <a class="nav-link" href="/submission">Submit Documents</a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="p-3 fw-bold text-uppercase">
+                        {{ auth()->user()->name }}
+                    </div>
+                    <form action="/logout" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-outline-success me-2" name="logout">
+                            LOGOUT
+                        </button>
+                    </form>
                 @else
-                <h1>Land Registration Authority</h1>
-                
+                    <div class="container-fluid">
+                        <div class="d-flex justify-content-center">
+                            <h1 class="text-center">Land Registration Authority</h1>
+                        </div>
+                    </div>
+
                 @endauth
             </div>
         </nav>
     </header>
     {{-- VIEW OUTPUT --}}
-    {{$slot}}
+    {{ $slot }}
+
+    
+
+
+
 
 </body>
 

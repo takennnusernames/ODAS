@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('transaction_info_id')->constrained()->onDelete('cascade');
+            $table->string('requirement');
             $table->longText('files');
+            $table->enum('assessment', ['accepted', 'denied', 'pending'])->default('pending');
+            $table->longText('feedback')->nullable();
             $table->timestamps();
         });
     }
